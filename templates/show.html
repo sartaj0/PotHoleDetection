@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block head %}
+{% endblock %}
+
+{% block body %}
+
+ <div class="jumbotron text-center">
+
+<table border="5" bordercolor="block" align="center" id='tab'>
+<thead>
+	<tr>
+		<th scope="col">Name</th>
+		<th scope="col">Location</th>
+		<th scope="col">Description</th>
+		<th scope="col">Image</th>
+	</tr>
+</thead>
+
+<tbody>
+	{%for i in range(0, len)%} 
+		<tr class="table">
+			<td>{{data1[i][0]}}</td>
+			<td>{{data1[i][1]}}</td> 
+			<td>{{data1[i][2]}}</td> 
+			<td><img src="data:;base64,{{ data1[i][3] }}"/></td>
+		</tr>
+
+	{%endfor%} 	
+</tbody>
+</table>
+</div>
+<script type="text/javascript">
+$('#tab').DataTable();
+</script>
+
+{% endblock %}

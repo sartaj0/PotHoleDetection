@@ -1,0 +1,43 @@
+<!-- {% extends 'base.html' %}
+{% block head %}
+{% endblock %}
+
+{% block body %}
+
+<div class="container p-5 ">
+
+		<div class="card border-primary mb-6" style="max-width: 50rem;">
+		  <div class="card-header"><h4>Result of input image.</h4></div>
+		  <div class="card-body">
+		    <form action="{{url_for('store')}}", method="post", enctype=multipart/form-data >
+				<div class="form-group">
+					<label for="exampleInputFile"><legend>Enter Name</legend></label>
+					<input type="text" id="uname" name="uname"> <br>
+
+					<label for="exampleInputFile"> <legend>Enter Location </legend></label>
+					<input type="text" id="location" name="location"> <br>
+
+					<label for="exampleInputFile"> <legend>Enter Damages</legend></label>
+					<textarea id="desc" name="desc" rows="4" cols="40"></textarea>
+				</div>
+				<input type="submit" class="btn btn-primary" value="store" />
+			</form>
+			<br>
+		    <img src="{{file}}">
+
+		    <form action="{{url_for('main')}}", method="post", enctype=multipart/form-data>
+
+			<div class="form-group">
+				<legend> Want to try once again ? </legend>
+		      <label for="exampleInputFile"> <legend>Choose Image: </legend></label>
+		      <input type="file" class="form-control-file", name="img",style="width:200px", accept="image/*"single/>
+		      <br>
+		      <input type="submit" class="btn btn-primary" value="predict" />
+		    </div>
+		</form>
+
+		  </div>
+		</div>		
+	</div>
+
+{% endblock %} -->
