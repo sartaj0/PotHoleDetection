@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block head %}
+{% endblock %}
+
+{% block body %}
+	<div class="jumbotron p-5 row">
+		<div class="col-sm-6">
+			<div class="card-header col-sm-6">
+			  		<h4>Admin Login</h4>
+			</div>
+			<div class="card-body">
+				<form action="{{url_for('login')}}", method="post", enctype=multipart/form-data >
+					<div class="form-group">
+						<div class="row">
+							<div class="form-group col-sm-6">
+								<!-- <label for="uname"><legend>Username/Email</legend></label> -->
+								<input type="text" class="form-control" id="uname" aria-describedby="emailHelp" placeholder="Username/Email" name="uname">
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-sm-6">
+								<!-- <label for="password"><legend>Password</legend></label> -->
+								<input type="password" class="form-control" id="password" aria-describedby="emailHelp" placeholder="Password" name="password">
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-sm-6">
+								<input type="submit" class="form-control" value="Login">
+							</div>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

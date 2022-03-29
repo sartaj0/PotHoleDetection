@@ -14,15 +14,16 @@
 			</div>
 		</div>
 		<div class="col-sm-8">
+			{% if msg %}
+				<h3>{{ msg }}</h3>
+			{% endif %}
 			{% if file %}
 			<div class="card border-primary mb-6" style="max-width: 50rem;">
 			  	<div class="card-header">
 			  		<h4>Result of input image.</h4>
 			  	</div>
 			  	<div class="card-body">
-				    {% if msg %}
-				    <h3>{{ msg }}</h3>
-				    {% else %}
+				    {% if not msg %}
 					    <form action="{{url_for('store')}}", method="post", enctype=multipart/form-data >
 							<div class="form-group">
 								<div class="row">
@@ -57,10 +58,12 @@
 								<textarea id="desc" name="desc" rows="4" cols="40"></textarea> -->
 							</div>
 							<input type="submit" class="btn btn-primary" value="store" />
+							<input type="hidden" id="custId" name="hiddenImage" value={{file}}>
 						</form>
 					{% endif %}
 					<br>
-				    <img class="col-sm-12" src="{{file}}">
+				    <!-- <img class="col-sm-12" src="{{file}}"> -->
+				    <img name="predictedImage" class="col-sm-12" src="data:image/png;base64,{{file}}">
 				</div>
 			</div>
 			{% endif %}
