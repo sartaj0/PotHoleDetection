@@ -1,4 +1,4 @@
-arparse
+argparse
 flask
 opencv-python
 Pillow

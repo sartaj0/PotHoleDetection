@@ -35,13 +35,15 @@ sql = '''CREATE TABLE IF NOT EXISTS pothole_table(
     PHOTO BLOB NOT NULL
 )'''
 
+sql2 = 'DROP TABLE IF EXISTS admin'
 
 sql3 = '''CREATE TABLE IF NOT EXISTS admin(
 	"username"	TEXT NOT NULL UNIQUE,
 	"email"	TEXT NOT NULL UNIQUE,
 	"password"	TEXT NOT NULL
 )'''
-sql2 = 'DROP TABLE IF EXISTS admin'
+
+
 sql4 = '''INSERT INTO admin VALUES ('admin', 'admin@admin.com', 'admin')'''
 
 conn = sqlite3.connect("records/pothole.db")
@@ -87,7 +89,7 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 1
 app.config['imgdir'] = os.path.sep.join(['static', 'upload', 'images'])
 app.config['SECRET_KEY'] = "AllSilverTeaCup" 
 
-
+# 127:0.0.1:5000/
 @app.route('/')
 def index():
 	session['verified'] = False
@@ -179,6 +181,8 @@ def show():
 		print("Error", e)
 	return render_template('show.html', data1=data1, len=len(data1))
 
+
+
 @app.route('/login', methods=['POST', "GET"])
 def login():
 	name = request.form['uname']
@@ -191,7 +195,7 @@ def login():
 		if result is None:
 			return render_template("adminlogin.html")
 		session['verified'] = True
-		return  redirect("/show")
+		return redirect("/show")
 	except Exception as e:
 		print(e)
 
