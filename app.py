@@ -32,7 +32,9 @@ sql = '''CREATE TABLE IF NOT EXISTS pothole_table(
 	NAME TEXT NOT NULL,
     LOCATION TEXT NOT NULL,
     DESCRIPTION TEXT NOT NULL,
-    PHOTO BLOB NOT NULL
+    PHOTO BLOB NOT NULL,
+	EMAIL TEXT NOT NULL,
+	NUMBER VARCHAR(10) NOT NULL
 )'''
 
 sql2 = 'DROP TABLE IF EXISTS admin'
@@ -139,6 +141,10 @@ def store():
 	name = request.form['uname']
 	desc = request.form['desc']
 	location = request.form['location']
+
+	email = request.form['email']
+	phone = request.form['phone']
+
 	# blobData = convertToBinaryData("static/img.png")
 	# print(type(blobData))
 	blobData = request.form['hiddenImage']
@@ -148,8 +154,8 @@ def store():
 	conn = sqlite3.connect("records/pothole.db")
 	cursor = conn.cursor()
 
-	sqlite_insert_blob_query = "INSERT INTO pothole_table (NAME, LOCATION, DESCRIPTION, PHOTO) VALUES (?, ?, ?, ?)"
-	data_tuple = (name, location, desc, blobData)
+	sqlite_insert_blob_query = "INSERT INTO pothole_table (NAME, LOCATION, DESCRIPTION, PHOTO, EMAIL, NUMBER) VALUES (?, ?, ?, ?, ?, ?)"
+	data_tuple = (name, location, desc, blobData, email, phone)
 	cursor.execute(sqlite_insert_blob_query, data_tuple)
 
 	conn.commit()
